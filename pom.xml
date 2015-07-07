@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This file is part of JEMMA - http://jemma.energy-home.org
+    (C) Copyright 2013 Telecom Italia (http://www.telecomitalia.it)
+
+    JEMMA is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License (LGPL) version 3
+    or later as published by the Free Software Foundation, which accompanies
+    this distribution and is available at http://www.gnu.org/licenses/lgpl.html
+
+    JEMMA is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License (LGPL) for more details.
+
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.energy-home</groupId>
+	<artifactId>jemma.osgi.utils</artifactId>
+	<packaging>bundle</packaging>
+	<version>1.0.6</version>
+	<name>Osgi Utils</name>
+	<properties>
+		<felix.bundle.plugin.version>2.5.3</felix.bundle.plugin.version>
+		<org.eclipse.osgi.version>3.10.0</org.eclipse.osgi.version>
+		<org.eclipse.osgi.services.version>3.4.0</org.eclipse.osgi.services.version>
+		<org.apache.commons.codec.version>1.3.0</org.apache.commons.codec.version>
+		<stax-osgi.version>0.3.95</stax-osgi.version>
+		<javax.activation.version>1.1</javax.activation.version>
+		<org.apache.httpcomponents.httpclient>4.1.0</org.apache.httpcomponents.httpclient>
+		<org.apache.httpcomponents.httpcore>4.1.0</org.apache.httpcomponents.httpcore>
+		<com.googlecode.jaxb-namespaceprefixmapper-interfaces>2.2.4</com.googlecode.jaxb-namespaceprefixmapper-interfaces>
+		<org.ops4j.pax.logging.version>1.7.2</org.ops4j.pax.logging.version>
+		<org.apache.commons.logging.version>1.1.1</org.apache.commons.logging.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${felix.bundle.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<supportedProjectTypes>
+						<supportedProjectType>jar</supportedProjectType>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Import-Package>javax.xml.bind,
+							 javax.xml.bind.annotation,
+							 javax.xml.bind.annotation.adapters,
+							 javax.xml.bind.helpers,
+							 javax.xml.namespace,
+							 javax.crypto,
+							 javax.crypto.spec,
+							 org.apache.commons.codec,
+							 org.slf4j;version="[1.6,2)",
+							 org.eclipse.osgi.framework.console;version="1.0.0",
+							 org.osgi.framework;version="1.3.0",*;resolution:=optional
+						</Import-Package>
+						<Export-Package>org.energy_home.jemma.osgi.utils.equinox.console;version="1.0.0",
+							 org.energy_home.jemma.utils.datetime;version="1.0.1",
+							 org.energy_home.jemma.utils.encrypt;version="1.0.0",
+							 org.energy_home.jemma.utils.rest;version="1.0.0",
+							 org.energy_home.jemma.utils.thread;version="1.0.0",
+							 org.energy_home.jemma.utils.xml.jaxb;version="1.0.0"
+						</Export-Package>
+						<Require-Bundle>org.apache.httpcomponents.httpclient;bundle-version="4.1.0",
+							 org.apache.httpcomponents.httpcore;bundle-version="4.1.0"
+						</Require-Bundle>
+						<Bundle-Vendor>Telecom Italia</Bundle-Vendor>
+						<Bundle-Category>Automation@Home</Bundle-Category>
+						<Bundle-Activator>org.energy_home.jemma.osgi.utils.Activator</Bundle-Activator>
+						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+						<Embed-Dependency>JAXBNamespacePrefixMapper,!*</Embed-Dependency>
+						<Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>JemmaRepository</id>
+			<name>JEMMA Maven repository</name>
+			<url>http://ismb.github.io/jemma-maven-repository/maven</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.osgi</groupId>
+			<artifactId>org.eclipse.osgi</artifactId>
+			<version>${org.eclipse.osgi.version}</version>
+			<scope>compile</scope>
+			
+		</dependency>
+			    
+		<dependency>
+			<groupId>org.eclipse.osgi</groupId>
+			<artifactId>org.eclipse.osgi.services</artifactId>
+			<version>${org.eclipse.osgi.services.version}</version>
+			<scope>compile</scope>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>org.apache.commons.codec</artifactId>
+			<version>${org.apache.commons.codec.version}</version>
+			<scope>compile</scope>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>org.apache.httpcomponents.httpclient</artifactId>
+			<version>${org.apache.httpcomponents.httpclient}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
+			<version>${org.apache.httpcomponents.httpcore}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		      <groupId>com.sun.enterprise</groupId>
+		      <artifactId>stax-osgi</artifactId>
+		      <version>${stax-osgi.version}</version>
+		      <scope>compile</scope>
+		</dependency>
+		<dependency>
+		      <groupId>javax.activation</groupId>
+		      <artifactId>javax.activation</artifactId>
+		      <version>${javax.activation.version}</version>
+		      <scope>compile</scope>
+		</dependency>
+		<dependency>
+            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
+            <artifactId>JAXBNamespacePrefixMapper</artifactId>
+            <version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
+            <scope>compile</scope>
+   		</dependency>
+   		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-service</artifactId>
+			<version>${org.ops4j.pax.logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-api</artifactId>
+			<version>${org.ops4j.pax.logging.version}</version>
+		</dependency>
+
+	</dependencies>
+</project>

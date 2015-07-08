@@ -27,16 +27,12 @@
 	<name>Osgi Utils</name>
 	<properties>
 		<felix.bundle.plugin.version>2.5.3</felix.bundle.plugin.version>
-		<org.eclipse.osgi.version>3.10.0</org.eclipse.osgi.version>
-		<org.eclipse.osgi.services.version>3.4.0</org.eclipse.osgi.services.version>
-		<org.apache.commons.codec.version>1.3.0</org.apache.commons.codec.version>
-		<stax-osgi.version>0.3.95</stax-osgi.version>
-		<javax.activation.version>1.1</javax.activation.version>
+		<org.eclipse.osgi.version>3.10.0-v20140606-1445</org.eclipse.osgi.version>
 		<org.apache.httpcomponents.httpclient>4.1.0</org.apache.httpcomponents.httpclient>
 		<org.apache.httpcomponents.httpcore>4.1.0</org.apache.httpcomponents.httpcore>
 		<com.googlecode.jaxb-namespaceprefixmapper-interfaces>2.2.4</com.googlecode.jaxb-namespaceprefixmapper-interfaces>
-		<org.ops4j.pax.logging.version>1.7.2</org.ops4j.pax.logging.version>
 		<org.apache.commons.logging.version>1.1.1</org.apache.commons.logging.version>
+		<org.slf4j.version>1.6.2</org.slf4j.version>
 	</properties>
 	<build>
 		<plugins>
@@ -99,26 +95,30 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>org.eclipse.osgi</groupId>
-			<artifactId>org.eclipse.osgi</artifactId>
-			<version>${org.eclipse.osgi.version}</version>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
 			<scope>compile</scope>
-			
-		</dependency>
-			    
-		<dependency>
-			<groupId>org.eclipse.osgi</groupId>
-			<artifactId>org.eclipse.osgi.services</artifactId>
-			<version>${org.eclipse.osgi.services.version}</version>
-			<scope>compile</scope>
-
 		</dependency>
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>org.apache.commons.codec</artifactId>
-			<version>${org.apache.commons.codec.version}</version>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>4.2.0</version>
 			<scope>compile</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency> 
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
+			<version>${org.apache.httpcomponents.httpcore}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -127,22 +127,16 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
-			<version>${org.apache.httpcomponents.httpcore}</version>
+			<groupId>org.eclipse</groupId>
+			<artifactId>osgi</artifactId>
+			<version>${org.eclipse.osgi.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
 		<dependency>
-		      <groupId>com.sun.enterprise</groupId>
-		      <artifactId>stax-osgi</artifactId>
-		      <version>${stax-osgi.version}</version>
-		      <scope>compile</scope>
-		</dependency>
-		<dependency>
-		      <groupId>javax.activation</groupId>
-		      <artifactId>javax.activation</artifactId>
-		      <version>${javax.activation.version}</version>
-		      <scope>compile</scope>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${org.apache.commons.logging.version}</version>
 		</dependency>
 		<dependency>
 	            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
@@ -150,18 +144,6 @@
 	            <version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
 	            <scope>compile</scope>
    		</dependency>
-   		<dependency>
-			<groupId>org.ops4j.pax.logging</groupId>
-			<artifactId>pax-logging-service</artifactId>
-			<version>${org.ops4j.pax.logging.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.logging</groupId>
-			<artifactId>pax-logging-api</artifactId>
-			<version>${org.ops4j.pax.logging.version}</version>
-			<scope>compile</scope>
-		</dependency>
 
 	</dependencies>
 </project>

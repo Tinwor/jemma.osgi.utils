@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1436277030477
+Bnd-LastModified: 1436361639444
 Build-Jdk: 1.8.0_45
 Built-By: fabio
 Bundle-Activator: org.energy_home.jemma.osgi.utils.Activator
@@ -26,8 +26,8 @@ Export-Package: org.energy_home.jemma.osgi.utils.equinox.console;version
 Import-Package: javax.xml.bind,javax.xml.namespace,javax.crypto,javax.cr
  ypto.spec,org.slf4j;version="[1.6,2)",org.eclipse.osgi.framework.consol
  e;version="1.0.0",org.osgi.framework;version="1.3.0",javax.xml.datatype
- ;resolution:=optional,org.apache.commons.logging;resolution:=optional;v
- ersion="[1.1,2)",org.apache.http;resolution:=optional,org.apache.http.a
+ ;resolution:=optional,org.apache.commons.logging;resolution:=optional,o
+ rg.apache.http;resolution:=optional;version="[4.1,5)",org.apache.http.a
  uth;resolution:=optional;version="[4.1,5)",org.apache.http.client;resol
  ution:=optional;version="[4.1,5)",org.apache.http.client.methods;resolu
  tion:=optional;version="[4.1,5)",org.apache.http.conn;resolution:=optio
@@ -41,8 +41,8 @@ Import-Package: javax.xml.bind,javax.xml.namespace,javax.crypto,javax.cr
  .util;resolution:=optional;version="[4.1,5)",org.energy_home.jemma.util
  s.datetime;resolution:=optional;version="[1.0,2)",org.energy_home.jemma
  .utils.thread;resolution:=optional;version="[1.0,2)",javax.xml.bind.ann
- otation.adapters,org.apache.commons.codec;version="[1.3,2)",javax.xml.b
- ind.helpers,javax.xml.bind.annotation
+ otation.adapters,org.apache.commons.codec,javax.xml.bind.helpers,javax.
+ xml.bind.annotation
 Require-Bundle: org.apache.httpcomponents.httpclient;bundle-version="4.1
  .0",org.apache.httpcomponents.httpcore;bundle-version="4.1.0"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.5))"

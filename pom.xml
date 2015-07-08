@@ -145,20 +145,22 @@
 		      <scope>compile</scope>
 		</dependency>
 		<dependency>
-            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
-            <artifactId>JAXBNamespacePrefixMapper</artifactId>
-            <version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
-            <scope>compile</scope>
+	            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
+	            <artifactId>JAXBNamespacePrefixMapper</artifactId>
+	            <version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
+	            <scope>compile</scope>
    		</dependency>
    		<dependency>
 			<groupId>org.ops4j.pax.logging</groupId>
 			<artifactId>pax-logging-service</artifactId>
 			<version>${org.ops4j.pax.logging.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.logging</groupId>
 			<artifactId>pax-logging-api</artifactId>
 			<version>${org.ops4j.pax.logging.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>

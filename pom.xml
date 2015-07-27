@@ -23,16 +23,23 @@
 	<groupId>org.energy-home</groupId>
 	<artifactId>jemma.osgi.utils</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<name>Osgi Utils</name>
 	<properties>
-		<felix.bundle.plugin.version>2.5.3</felix.bundle.plugin.version>
-		<org.eclipse.osgi.version>3.10.0</org.eclipse.osgi.version>
-		<org.apache.httpcomponents.httpclient>4.1.0</org.apache.httpcomponents.httpclient>
-		<org.apache.httpcomponents.httpcore>4.1.0</org.apache.httpcomponents.httpcore>
+	
+		<!-- External dependencies version properties -->
 		<com.googlecode.jaxb-namespaceprefixmapper-interfaces>2.2.4</com.googlecode.jaxb-namespaceprefixmapper-interfaces>
 		<org.apache.commons.logging.version>1.1.1</org.apache.commons.logging.version>
+		<org.apache.httpcomponents.httpclient.version>4.1.0</org.apache.httpcomponents.httpclient.version>
+		<org.apache.httpcomponents.httpcore.version>4.1.0</org.apache.httpcomponents.httpcore.version>		
+		<org.eclipse.osgi.version>3.10.0</org.eclipse.osgi.version>
+		<org.osgi.compendium.version>4.2.0</org.osgi.compendium.version>
+		<org.osgi.core.version>4.2.0</org.osgi.core.version>		
 		<org.slf4j.version>1.6.2</org.slf4j.version>
+		
+		<!-- Maven plugin version properties -->
+		<felix.bundle.plugin.version>2.5.3</felix.bundle.plugin.version>
+		
 	</properties>
 	<build>
 		<plugins>
@@ -116,36 +123,29 @@
 	</repositories>
 	
 	<dependencies>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<version>4.2.0</version>
-			<scope>compile</scope>
-		</dependency>
 
+		<!-- External dependencies -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
+			<groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
+			<artifactId>JAXBNamespacePrefixMapper</artifactId>
+			<version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
 			<scope>compile</scope>
-		</dependency> 
-
+   		</dependency>
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
-			<version>${org.apache.httpcomponents.httpcore}</version>
-			<scope>compile</scope>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${org.apache.commons.logging.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>org.apache.httpcomponents.httpclient</artifactId>
-			<version>${org.apache.httpcomponents.httpclient}</version>
+			<version>${org.apache.httpcomponents.httpclient.version}</version>
+			<scope>compile</scope>
+		</dependency>		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
+			<version>${org.apache.httpcomponents.httpcore.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -153,19 +153,25 @@
 			<artifactId>org.eclipse.osgi</artifactId>
 			<version>${org.eclipse.osgi.version}</version>
 			<scope>compile</scope>
-		</dependency>
-
+		</dependency>		
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>${org.apache.commons.logging.version}</version>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>${org.osgi.compendium.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-	            <groupId>com.googlecode.jaxb-namespaceprefixmapper-interfaces</groupId>
-	            <artifactId>JAXBNamespacePrefixMapper</artifactId>
-	            <version>${com.googlecode.jaxb-namespaceprefixmapper-interfaces}</version>
-	            <scope>compile</scope>
-   		</dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>${org.osgi.core.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency> 	
 
 	</dependencies>
 </project>

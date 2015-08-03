@@ -34,10 +34,10 @@ import javax.xml.bind.JAXBException;
 
 import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
 
-public abstract class XmlConverter {	
+public abstract class XmlConverter {
 	public static final String XML_SCHEMA_NAMESPACE = "http://www.w3.org/2001/XMLSchema";
 	public static final String XML_SCHEMA_INSTANCE_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
-	
+
 	protected static final String getPrintableString(String xml) {
 		StringBuilder sb = new StringBuilder(xml);
 		int i = 0;
@@ -47,18 +47,18 @@ public abstract class XmlConverter {
 
 		return sb.toString();
 	}
-	
+
 	private class CustomNameSpacePrefixMapper extends NamespacePrefixMapper {
 		private Map<String, String> namespacesPrefixMap;
-		
+
 		CustomNameSpacePrefixMapper(Map<String, String> namespacesPrefixMap) {
 			this.namespacesPrefixMap = Collections.unmodifiableMap(namespacesPrefixMap);
 		}
-		
+
 		Map<String, String> getNamespacePreferredPrefixMap() {
 			return namespacesPrefixMap;
 		}
-		
+
 		public String[] getPreDeclaredNamespaceUris() {
 			String[] result = new String[namespacesPrefixMap.size()];
 			namespacesPrefixMap.keySet().toArray(result);
@@ -71,14 +71,14 @@ public abstract class XmlConverter {
 				return suggestion;
 			return result;
 		}
-		
+
 	}
-	
+
 	private class ConverterPool {
 		private int poolMaxSize = 0;
 		private int currentIndex = -1;
 		private List<JaxbConverter> pool;
-		
+
 		ConverterPool(int poolMaxSize) {
 			if (poolMaxSize <= 0)
 				throw new IllegalStateException("Pool size cannot be 0 or a negative number");
@@ -86,18 +86,18 @@ public abstract class XmlConverter {
 			pool = new ArrayList<JaxbConverter>(poolMaxSize);
 			this.currentIndex = 0;
 		}
-		
+
 		private void incrementIndex() {
 			currentIndex++;
 			if (currentIndex == poolMaxSize)
 				currentIndex = 0;
 		}
-		
+
 		int getMaxSize() {
 			return poolMaxSize;
 		}
-		
-		synchronized JaxbConverter get() throws JAXBException {	
+
+		synchronized JaxbConverter get() throws JAXBException {
 			JaxbConverter converter;
 			if (pool.size() < poolMaxSize) {
 				converter = createConverter();
@@ -105,18 +105,18 @@ public abstract class XmlConverter {
 			} else {
 				converter = pool.get(currentIndex);
 			}
-				
+
 			if (poolMaxSize > 1)
 				incrementIndex();
 			return converter;
 		}
 	}
-	
+
 	private String contextPath;
 	private String defaultNamespace;
 	private ConverterPool convertersPool;
 	private CustomNameSpacePrefixMapper namespacePrefixMapper;
-	
+
 	private void setPoolMaxSize(int poolMaxSize) {
 		if (poolMaxSize > 0) {
 			convertersPool = new ConverterPool(poolMaxSize);
@@ -124,13 +124,13 @@ public abstract class XmlConverter {
 			convertersPool = null;
 		}
 	}
-	
+
 	protected final NamespacePrefixMapper getNamespacePrefixMapper() {
 		return this.namespacePrefixMapper;
 	}
 
 	protected JaxbConverter getConverter() throws JAXBException {
-		JaxbConverter jaxbConverter;	
+		JaxbConverter jaxbConverter;
 		if (convertersPool == null) {
 			jaxbConverter = createConverter();
 		} else {
@@ -138,11 +138,11 @@ public abstract class XmlConverter {
 		}
 		return jaxbConverter;
 	}
-	
+
 	protected JaxbConverter createConverter() throws JAXBException {
 		return new JaxbConverter(this);
 	}
-	
+
 	protected abstract JAXBContext createJaxbContext(String contextPath) throws JAXBException;
 
 	protected XmlConverter(String contextPath, String defaultNamespace, Map<String, String> nameSpacePreferredPrefixMap, int poolMaxSize) {
@@ -152,22 +152,22 @@ public abstract class XmlConverter {
 			this.namespacePrefixMapper = new CustomNameSpacePrefixMapper(nameSpacePreferredPrefixMap);
 		setPoolMaxSize(poolMaxSize);
 	}
-	
+
 	public String getContextPath() {
 		return this.contextPath;
 	}
-	
+
 	public String getDefaultNamespace() {
 		return this.defaultNamespace;
 	}
-	
+
 	public Map<String, String> getNameSpacePreferredPrefixMap() {
 		if (namespacePrefixMapper == null)
 			return null;
 		else
 			return namespacePrefixMapper.getNamespacePreferredPrefixMap();
 	}
-	
+
 	public byte[] getByteArray(Object o) {
 		try {
 			return getConverter().getByteArrayOutputStream(o).toByteArray();
@@ -208,11 +208,10 @@ public abstract class XmlConverter {
 		return null;
 
 	}
-	
+
 	public Object getObject(String xmlString) {
 		try {
-			return getConverter().readObject(
-					new ByteArrayInputStream(xmlString.getBytes(JaxbConverter.UTF8_CHAR_ENCODING)));
+			return getConverter().readObject(new ByteArrayInputStream(xmlString.getBytes(JaxbConverter.UTF8_CHAR_ENCODING)));
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -280,6 +279,6 @@ public abstract class XmlConverter {
 					e.printStackTrace();
 				}
 		}
-	}	
-	
+	}
+
 }

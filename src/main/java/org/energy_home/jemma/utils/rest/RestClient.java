@@ -124,8 +124,7 @@ public class RestClient {
 
 	public void setCredential(String hostname, int port, String username, String password) {
 		HttpHost httpHost = new HttpHost(hostname, port);
-		httpClient.getCredentialsProvider().setCredentials(new AuthScope(hostname, port),
-				new UsernamePasswordCredentials(username, password));
+		httpClient.getCredentialsProvider().setCredentials(new AuthScope(hostname, port), new UsernamePasswordCredentials(username, password));
 		// Create AuthCache instance
 		AuthCache authCache = new BasicAuthCache();
 		// Generate BASIC scheme object and add it to the local auth cache

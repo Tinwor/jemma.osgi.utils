@@ -31,11 +31,12 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 
 public class JaxbConverter {
-//	private static String prefixMapperProperty = "com.sun.xml.internal.bind.namespacePrefixMapper";
+	// private static String prefixMapperProperty =
+	// "com.sun.xml.internal.bind.namespacePrefixMapper";
 	private static String prefixMapperProperty = "com.sun.xml.bind.namespacePrefixMapper";
 
 	public static final String UTF8_CHAR_ENCODING = "UTF8";
-		
+
 	private JAXBContext jaxbContext;
 	private Marshaller xmlMarshaller;
 	private Unmarshaller xmlUnmarshaller;
@@ -54,11 +55,12 @@ public class JaxbConverter {
 		jaxbContext = factory.createJaxbContext(factory.getContextPath());
 		xmlMarshaller = jaxbContext.createMarshaller();
 		xmlUnmarshaller = jaxbContext.createUnmarshaller();
-//		NamespacePrefixMapper nsPrefixMapper = factory.getNamespacePrefixMapper();
-//		if (nsPrefixMapper != null)
-		
+		// NamespacePrefixMapper nsPrefixMapper =
+		// factory.getNamespacePrefixMapper();
+		// if (nsPrefixMapper != null)
+
 	}
-	
+
 	public final ByteArrayOutputStream getByteArrayOutputStream(Object o) throws JAXBException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(512);
 		synchronized (xmlMarshaller) {
@@ -79,7 +81,7 @@ public class JaxbConverter {
 		}
 		return bos;
 	}
-	
+
 	public final Object readObject(InputStream in) throws JAXBException, IOException {
 		InputStreamReader utf8Reader = null;
 		Object o = null;
@@ -87,8 +89,8 @@ public class JaxbConverter {
 			utf8Reader = new InputStreamReader(in, UTF8_CHAR_ENCODING);
 			o = xmlUnmarshaller.unmarshal(utf8Reader);
 			if (o instanceof JAXBElement)
-				return ((JAXBElement)o).getValue();
-			else 
+				return ((JAXBElement) o).getValue();
+			else
 				return o;
 		}
 	}

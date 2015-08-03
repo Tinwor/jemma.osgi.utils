@@ -27,6 +27,7 @@
 	<name>Osgi Utils</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Internal dependencies version properties -->
 		
 		<!-- External dependencies version properties -->
 		<com.googlecode.jaxb-namespaceprefixmapper-interfaces>2.2.4</com.googlecode.jaxb-namespaceprefixmapper-interfaces>

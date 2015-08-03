@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1438012562382
-Build-Jdk: 1.7.0_45
-Built-By: bluewind
+Bnd-LastModified: 1438598175712
+Build-Jdk: 1.8.0_45
+Built-By: tomasi
 Bundle-Activator: org.energy_home.jemma.osgi.utils.Activator
 Bundle-Category: Automation@Home
 Bundle-ManifestVersion: 2
@@ -39,8 +39,8 @@ Import-Package: javax.xml.bind,javax.xml.namespace,javax.crypto,javax.cr
  tional;version="[4.1,5)",org.apache.http.util;resolution:=optional;vers
  ion="[4.1,5)",org.energy_home.jemma.utils.datetime;resolution:=optional
  ;version="[1.0,2)",org.energy_home.jemma.utils.thread;resolution:=optio
- nal;version="[1.0,2)",javax.xml.bind.annotation,javax.xml.bind.helpers,
- javax.xml.bind.annotation.adapters,org.apache.commons.codec
+ nal;version="[1.0,2)",javax.xml.bind.helpers,javax.xml.bind.annotation.
+ adapters,org.apache.commons.codec,javax.xml.bind.annotation
 Require-Bundle: org.apache.httpcomponents.httpclient;bundle-version="4.1
  .0",org.apache.httpcomponents.httpcore;bundle-version="4.1.0"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.5))"

@@ -23,7 +23,7 @@
 	<groupId>org.energy-home</groupId>
 	<artifactId>jemma.osgi.utils</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<name>Osgi Utils</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,6 +60,7 @@
 						<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
 						<Bundle-Name>${project.name}</Bundle-Name>
 						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Import-Package>javax.xml.bind,
 							 javax.xml.bind.annotation,
 							 javax.xml.bind.annotation.adapters,
@@ -84,7 +85,7 @@
 							 org.apache.httpcomponents.httpcore;bundle-version="4.1.0"
 						</Require-Bundle>
 						<Bundle-Vendor>Telecom Italia</Bundle-Vendor>
-						<Bundle-Category>Automation@Home</Bundle-Category>
+						<Bundle-Category>JEMMA Automation@Home, utils</Bundle-Category>
 						<Bundle-Activator>org.energy_home.jemma.osgi.utils.Activator</Bundle-Activator>
 						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
 						<Embed-Dependency>JAXBNamespacePrefixMappere;inline=false,!*</Embed-Dependency>
@@ -113,6 +114,15 @@
 					</instructions>
 				</configuration>
 			</plugin>
+			<!-- to launch: mvn java-formatter:format -->
+			<plugin>
+				<groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+				<artifactId>maven-java-formatter-plugin</artifactId>
+				<version>0.4</version>
+				<configuration>
+					<configFile>${project.basedir}/src/main/resources/formatter.xml</configFile>
+				</configuration>
+			</plugin>			
 		</plugins>
 	</build>
 	<repositories>
